@@ -25,6 +25,7 @@ NOTE: This repository contains the guide documentation source. To view the guide
 
 Learn how to containerize and run your microservices on Open Liberty using Podman.
 
+:linux: LINUX
 :win: WINDOWS
 :mac: MAC
 
@@ -79,6 +80,11 @@ podman machine start
 podman machine init
 podman machine start
 ```
+--
+
+[.tab_content.linux_section]
+--
+No extra setup needed. Podman runs natively.
 --
 
 ///////////////////////////
