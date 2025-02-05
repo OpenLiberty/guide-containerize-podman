@@ -63,6 +63,7 @@ If you are running Mac or Windows, make sure to start your Podman-managed VM bef
 include::{common-includes}/os-tabs.adoc[]
 
 [.tab_content.windows_section]
+--
 By default, Podman on Windows (WSL2) runs in rootless mode, which does not assign a container IP. To enable proper networking, Podman must be initialized in rootful mode.
 
 [role='command']
@@ -70,13 +71,20 @@ By default, Podman on Windows (WSL2) runs in rootless mode, which does not assig
 podman machine init --rootful
 podman machine start
 ```
+--
 
 [.tab_content.mac_section]
+--
 [role='command']
 ```
 podman machine init
 podman machine start
 ```
+--
+
+[.tab_content.linux_section]
+--
+--
 
 ///////////////////////////
 // Getting started
