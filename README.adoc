@@ -82,10 +82,6 @@ podman machine start
 ```
 --
 
-[.tab_content.linux_section]
---
---
-
 ///////////////////////////
 // Getting started
 ///////////////////////////
