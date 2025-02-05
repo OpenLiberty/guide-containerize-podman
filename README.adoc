@@ -58,7 +58,7 @@ with each other in different containers.
 
 Before you begin, Podman needs to be installed. For installation instructions, refer to the https://podman.io/getting-started/installation[official Podman documentation^]. You will build and run the microservices in containers.
 
-If you are running Mac or Windows, make sure to start your Podman-managed VM before you proceed.
+If you are running Mac or Windows, make sure to initialize and start your Podman-managed VM before you proceed.
 
 include::{common-includes}/os-tabs.adoc[]
 
