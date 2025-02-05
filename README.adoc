@@ -25,7 +25,6 @@ NOTE: This repository contains the guide documentation source. To view the guide
 
 Learn how to containerize and run your microservices on Open Liberty using Podman.
 
-:linux: LINUX
 :win: WINDOWS
 :mac: MAC
 
