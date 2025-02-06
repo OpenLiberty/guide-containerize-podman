@@ -25,10 +25,6 @@ NOTE: This repository contains the guide documentation source. To view the guide
 
 Learn how to containerize and run your microservices on Open Liberty using Podman.
 
-:linux: LINUX
-:win: WINDOWS
-:mac: MAC
-
 // =================================================================================================
 //  What you'll learn
 // =================================================================================================
@@ -60,32 +56,7 @@ Before you begin, Podman needs to be installed. For installation instructions, r
 
 If you are running Mac or Windows, make sure to initialize and start your Podman-managed VM before you proceed.
 
-include::{common-includes}/os-tabs.adoc[]
-
-[.tab_content.windows_section]
---
-By default, Podman on Windows (WSL2) runs in rootless mode, which does not assign a container IP. To enable proper networking, Podman must be initialized in rootful mode.
-
-[role='command']
-```
-podman machine init --rootful
-podman machine start
-```
---
-
-[.tab_content.mac_section]
---
-[role='command']
-```
-podman machine init
-podman machine start
-```
---
-
-[.tab_content.linux_section]
---
-No extra setup needed. Podman runs natively.
---
+On Windows, Podman runs in rootless mode by default, which does not assign a container IP. To enable proper networking, initialize Podman in rootful mode. Refer to the https://docs.podman.io/en/latest/markdown/podman-machine-init.1.html#rootful[official documentation^] for setup details.
 
 ///////////////////////////
 // Getting started
