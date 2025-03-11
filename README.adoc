@@ -56,7 +56,7 @@ Before you begin, Podman needs to be installed. For installation instructions, r
 
 If you are running Mac or Windows, make sure to initialize and start your Podman-managed VM before you proceed.
 
-On Windows, Podman runs in rootless mode by default, which does not assign a container IP. Because the `system` and `inventory` microservices need to communicate between containers, you must initialize Podman in https://docs.podman.io/en/latest/markdown/podman-machine-init.1.html#rootful[rootful^] mode to enable proper networking.
+On Windows, Podman runs in rootless mode by default, which does not assign a container IP address. Because the `system` and `inventory` microservices need to communicate between containers, you must initialize Podman in https://docs.podman.io/en/latest/markdown/podman-machine-init.1.html#rootful[rootful^] mode to enable proper networking.
 
 ///////////////////////////
 // Getting started
