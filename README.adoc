@@ -86,18 +86,46 @@ You can find the starting Java project in the `start` directory.
 This project is a multi-module Maven project that is made up of the `system` and `inventory` microservices. Each microservice is located in its own corresponding directory, `system` and `inventory`.
 
 To try out the microservices by using Maven, run the following Maven goal to build the `system` microservice and run it inside Open Liberty:
+
+include::{common-includes}/os-tabs.adoc[]
+
+[.tab_content.windows_section]
+--
 [role='command']
 ```
-mvn -pl system liberty:run
+mvnw.cmd -pl system liberty:run
 ```
+--
+
+[.tab_content.mac_section.linux_section]
+--
+[role='command']
+```
+./mvnw -pl system liberty:run
+```
+--
 
 // static guide instructions:
 ifndef::cloud-hosted[]
 Open another command-line session and run the following Maven goal to build the `inventory` microservice and run it inside Open Liberty:
+
+include::{common-includes}/os-tabs.adoc[]
+
+[.tab_content.windows_section]
+--
 [role='command']
 ```
-mvn -pl inventory liberty:run
+mvnw.cmd -pl inventory liberty:run
 ```
+--
+
+[.tab_content.mac_section.linux_section]
+--
+[role='command']
+```
+./mvnw -pl inventory liberty:run
+```
+--
 
 After you see the following message in both command-line sessions, both of your services are ready:
 
@@ -120,7 +148,7 @@ Select **Terminal** > **New Terminal** from the menu of the IDE to open another 
 run the following Maven goal to build the **inventory** microservice and run it inside Open Liberty:
 ```
 cd /home/project/guide-containerize-podman/start
-mvn -pl inventory liberty:run
+./mvnw -pl inventory liberty:run
 ```
 {: codeblock}
 
@@ -154,11 +182,26 @@ endif::[]
 ifndef::cloud-hosted[]
 After you are finished checking out the microservices, stop the Open Liberty instances by pressing `CTRL+C`
 in the command-line sessions where you ran the `system` and `inventory` services. Alternatively, you can run the `liberty:stop` goal in another command-line session:
+
+include::{common-includes}/os-tabs.adoc[]
+
+[.tab_content.windows_section]
+--
 [role='command']
 ```
-mvn -pl system liberty:stop
-mvn -pl inventory liberty:stop
+mvnw.cmd -pl system liberty:stop
+mvnw.cmd -pl inventory liberty:stop
 ```
+--
+
+[.tab_content.mac_section.linux_section]
+--
+[role='command']
+```
+./mvnw -pl system liberty:stop
+./mvnw -pl inventory liberty:stop
+```
+--
 endif::[]
 
 // cloud-hosted guide instructions:
@@ -167,17 +210,31 @@ After you are finished checking out the microservices, stop the Open Liberty ins
 in the command-line sessions where you ran the **system** and **inventory** services. Alternatively, you can run the **liberty:stop** goal in another command-line session from the **start** directory:
 ```
 cd /home/project/guide-containerize/start
-mvn -pl system liberty:stop
-mvn -pl inventory liberty:stop
+./mvnw -pl system liberty:stop
+./mvnw -pl inventory liberty:stop
 ```
 {: codeblock}
 endif::[]
 
 To package your microservices, run the Maven package goal to build the application `.war` files from the start directory so that the `.war` files are in the `system/target` and `inventory/target` directories.
+
+include::{common-includes}/os-tabs.adoc[]
+
+[.tab_content.windows_section]
+--
 [role='command']
 ```
-mvn package
+mvnw.cmd package
 ```
+--
+
+[.tab_content.mac_section.linux_section]
+--
+[role='command']
+```
+./mvnw package
+```
+--
 
 To learn more about RESTful web services and how to build them, see
 https://openliberty.io/guides/rest-intro.html[Creating a RESTful web service^] for details about how to build the `system` service.
@@ -228,7 +285,7 @@ Furthermore, you can label your container images with the [hotspot=label file=0]
 The [hotspot=copy-config hotspot=copy-war file=0]`COPY` instructions are structured as `COPY` [hotspot=config-userID hotspot=war-userID file=0]`[--chown=<user>:<group>]` [hotspot=inventory-config hotspot=inventory-war file=0]`<source>` [hotspot=config hotspot=config-apps file=0]`<destination>`. 
 They copy local files into the specified destination within your container image.
 In this case, the `inventory` Liberty configuration files that are located at `src/main/liberty/config` are copied to the [hotspot=config file=0]`/config/` destination directory.
-The `inventory` application WAR file [hotspot=inventory-war file=0]`inventory.war`, which was created from running `mvn package`, is copied to the [hotspot=config-apps file=0]`/config/apps` destination directory.
+The `inventory` application WAR file [hotspot=inventory-war file=0]`inventory.war`, which was created from running Maven `package`, is copied to the [hotspot=config-apps file=0]`/config/apps` destination directory.
 
 The [hotspot=copy-config hotspot=copy-war file=0]`COPY` instructions use the [hotspot=config-userID hotspot=war-userID file=0]`1001` user ID  and [hotspot=config-userID hotspot=war-userID file=0]`0` group because all official Open Liberty base images,
 including `icr.io/appcafe/open-liberty:full-java11-openj9-ubi` used in this case, run by default with the `USER 1001` (non-root) user for security purposes. Otherwise, the files and directories that are copied over are owned by the root user and a non-root user will be unable to access them.
@@ -649,11 +706,25 @@ include::finish/inventory/src/test/java/it/io/openliberty/guides/inventory/Inven
 ifndef::cloud-hosted[]
 Run the Maven `package` goal to compile the test classes. Run the Maven `failsafe` goal to test the services that are running in the containers by replacing the `[system-ip-address]` with the IP address that you determined previously.
 
+include::{common-includes}/os-tabs.adoc[]
+
+[.tab_content.windows_section]
+--
 [role='command']
 ```
-mvn package
-mvn failsafe:integration-test -Dsystem.ip=[system-ip-address] -Dinventory.http.port=9081 -Dsystem.http.port=9080
+mvnw.cmd package
+mvnw.cmd failsafe:integration-test -dsystem.ip=[system-ip-address] -dinventory.http.port=9081 -dsystem.http.port=9080
 ```
+--
+
+[.tab_content.mac_section.linux_section]
+--
+[role='command']
+```
+./mvnw package
+./mvnw failsafe:integration-test -dsystem.ip=[system-ip-address] -dinventory.http.port=9081 -dsystem.http.port=9080
+```
+--
 endif::[]
 
 // cloud-hosted guide instructions
@@ -662,8 +733,8 @@ Run the Maven **package** goal to compile the test classes. Run the Maven **fail
 
 ```
 SYSTEM_IP=`podman inspect -f "{{.NetworkSettings.IPAddress }}" system`
-mvn package
-mvn failsafe:integration-test -Dsystem.ip="$SYSTEM_IP" -Dinventory.http.port=9081 -Dsystem.http.port=9080
+./mvnw package
+./mvnw failsafe:integration-test -Dsystem.ip="$SYSTEM_IP" -Dinventory.http.port=9081 -Dsystem.http.port=9080
 ```
 {: codeblock}
 endif::[]
