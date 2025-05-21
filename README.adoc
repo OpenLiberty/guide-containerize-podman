@@ -713,7 +713,7 @@ include::{common-includes}/os-tabs.adoc[]
 [role='command']
 ```
 mvnw.cmd package
-mvnw.cmd failsafe:integration-test -dsystem.ip=[system-ip-address] -dinventory.http.port=9081 -dsystem.http.port=9080
+mvnw.cmd failsafe:integration-test -Dsystem.ip=[system-ip-address] -Dinventory.http.port=9081 -Dsystem.http.port=9080
 ```
 --
 
@@ -722,7 +722,7 @@ mvnw.cmd failsafe:integration-test -dsystem.ip=[system-ip-address] -dinventory.h
 [role='command']
 ```
 ./mvnw package
-./mvnw failsafe:integration-test -dsystem.ip=[system-ip-address] -dinventory.http.port=9081 -dsystem.http.port=9080
+./mvnw failsafe:integration-test -Dsystem.ip=[system-ip-address] -Dinventory.http.port=9081 -Dsystem.http.port=9080
 ```
 --
 endif::[]
